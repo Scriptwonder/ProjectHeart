@@ -3,11 +3,11 @@
 # Get latest from https://github.com/github/gitignore/blob/master/Unity.gitignore
 #
 /[Ll]ibrary/
-/[Tt]emp/
+Temp/
 /[Oo]bj/
 /[Bb]uild/
 /[Bb]uilds/
-/[Ll]ogs/
+Logs/
 /[Mm]emoryCaptures/
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
@@ -21,6 +21,9 @@
 
 # Visual Studio cache directory
 .vs/
+
+# visual studio code
+.vscode/
 
 # Gradle cache directory
 .gradle/
@@ -58,3 +61,5 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+# don't mix UserSettings
+UserSettings/
