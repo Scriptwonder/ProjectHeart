@@ -15,13 +15,7 @@ public class IdleWalkRun : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-
-       
-
         if (mAnimator != null) {
-
-
             if(!Input.GetKey(KeyCode.RightArrow) && !Input.GetKey(KeyCode.LeftArrow)) {
                 mAnimator.SetTrigger("WalkIdle");
             } else {
@@ -53,10 +47,10 @@ public class IdleWalkRun : MonoBehaviour
 
 
             if (Input.GetKeyDown(KeyCode.Space)) {
-                mAnimator.SetTrigger("Jump");
+                
             }
 
-            if (Input.GetKeyDown(KeyCode.Z)) {
+            if (Input.GetKeyDown(KeyCode.C)) {
                 mAnimator.SetTrigger("Contact");
             }
 
@@ -64,9 +58,9 @@ public class IdleWalkRun : MonoBehaviour
                 mAnimator.SetTrigger("Punch");
             }
 
-            if (Input.GetKeyDown(KeyCode.C)) {
+            if (Input.GetKeyDown(KeyCode.Z)) {
                 mAnimator.SetTrigger("Dash");
-                mAnimator.SetTrigger("DoubleJump");
+                //mAnimator.SetTrigger("DoubleJump");
             }
 
             if (Input.GetKeyDown(KeyCode.V)) {

@@ -108,6 +108,7 @@ public class CharacterController : MonoBehaviour
             if (Input.GetButtonDown("Jump") && jumpNum > 0) {
                 //Debug.Log("Jump" + jumpNum);
                 //rb.AddForce(new Vector2(0, jumpForce));
+                mAnimator.SetTrigger("Jump");
                 float offset = rb.velocity.y > 0 ? 1f : 0.5f;
                 rb.velocity = new Vector2(rb.velocity.x, offset * jumpForce);
                 isJumping = true;
@@ -131,13 +132,22 @@ public class CharacterController : MonoBehaviour
                 dash();
             }
 
+            if (Input.GetKeyDown(KeyCode.F)) {
+                mAnimator.SetTrigger("WalkIdle");
+                CharacterSystem.instance.restart();
+            }
+
             moveHorizontal = Input.GetAxis("Horizontal");
             if (moveHorizontal < 0) {
+                mAnimator.SetTrigger("StartWalk");
                 isFacingRight = false;
                 transform.localScale = new Vector2(-1, transform.localScale.y);
-            } else {
+            } else if (moveHorizontal > 0) {
+                mAnimator.SetTrigger("StartWalk");
                 isFacingRight = true;
                 transform.localScale = new Vector2(1, transform.localScale.y);
+            } else {
+                mAnimator.SetTrigger("WalkIdle");
             }
             isGrounded = IsGrounded();
 
@@ -150,7 +160,7 @@ public class CharacterController : MonoBehaviour
                 isJumping = false;
                 int characterId = CharacterSystem.instance.characterId;
                 jumpNum = characterId == 0 ? 1 : 2;
-                //mAnimator.SetTrigger("contact");
+                mAnimator.SetTrigger("contact");
             }
 
             WallSlide();
@@ -179,14 +189,18 @@ public class CharacterController : MonoBehaviour
     }
 
     public void downBurst() {
+        mAnimator.SetTrigger("DownSmash");
         if (!isNearGround) {
+            
             rb.gravityScale = 0.0f;
             isDownBursting = true;
         }
     }
 
     public void longDash() {
+        mAnimator.SetTrigger("Dash");
         if (!isNearWall) {
+            
             rb.gravityScale = 0.0f;
             isLongDashing = true;
         }
@@ -279,6 +293,7 @@ public class CharacterController : MonoBehaviour
     {
         if (isWallSliding)
         {
+            mAnimator.SetTrigger("ContactWall");
             isWallJumping = false;
             wallJumpingDirection = -transform.localScale.x;
             wallJumpingCounter = wallJumpingTime;
@@ -293,6 +308,7 @@ public class CharacterController : MonoBehaviour
         if (Input.GetButtonDown("Jump") && wallJumpingCounter > 0f)
         {
             //Debug.Log("Jumpjump");
+            mAnimator.SetTrigger("WallJump");
             isWallJumping = true;
             rb.velocity = new Vector2(wallJumpingDirection * wallJumpingPower.x, wallJumpingPower.y);
             wallJumpingCounter = 0f;
