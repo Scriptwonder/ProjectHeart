@@ -12,6 +12,8 @@ public class CharacterController : MonoBehaviour
 
     public float groundRadius = 0.2f;
 
+    private CharacterSystem characterSystem;
+
     public float speed = 10f;
     private float moveHorizontal;
 
@@ -41,7 +43,7 @@ public class CharacterController : MonoBehaviour
     private float wallJumpingTime = 0.2f;
     private float wallJumpingDuration = 0.4f;
     private float wallJumpingCounter;
-    private Vector2 wallJumpingPower = new Vector2(8f, 16f);
+    private Vector2 wallJumpingPower = new Vector2(2f, 4f);
 
     private bool isJumping = false;
     public float jumpForce = 500f;
@@ -63,7 +65,8 @@ public class CharacterController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         mAnimator = GetComponent<Animator>();
-        int characterId = CharacterSystem.instance.characterId;
+        characterSystem = GetComponent<CharacterSystem>();
+        int characterId = characterSystem.characterId;
         switchId(characterId);
     }
 
@@ -109,8 +112,7 @@ public class CharacterController : MonoBehaviour
                 //Debug.Log("Jump" + jumpNum);
                 //rb.AddForce(new Vector2(0, jumpForce));
                 mAnimator.SetTrigger("Jump");
-                float offset = rb.velocity.y > 0 ? 1f : 0.5f;
-                rb.velocity = new Vector2(rb.velocity.x, offset * jumpForce);
+                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
                 isJumping = true;
                 isGrounded = false;
                 jumpNum--;
@@ -134,7 +136,11 @@ public class CharacterController : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.F)) {
                 mAnimator.SetTrigger("WalkIdle");
-                CharacterSystem.instance.restart();
+                characterSystem.restart();
+            }
+
+            if (Input.GetKeyDown(KeyCode.Q)) {
+                CameraFollow.instance.swapTarget();
             }
 
             moveHorizontal = Input.GetAxis("Horizontal");
@@ -158,7 +164,7 @@ public class CharacterController : MonoBehaviour
 
             if (IsGrounded()) {
                 isJumping = false;
-                int characterId = CharacterSystem.instance.characterId;
+                int characterId = characterSystem.characterId;
                 jumpNum = characterId == 0 ? 1 : 2;
                 mAnimator.SetTrigger("contact");
             }

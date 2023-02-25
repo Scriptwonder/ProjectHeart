@@ -19,7 +19,8 @@ public class Obstacle : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col) {
         if (col.gameObject.tag == "Player") {
-            CharacterSystem.instance.restart();
+            CharacterSystem characterSystem = col.gameObject.GetComponent<CharacterSystem>();
+            characterSystem.restart();
         }
     }
 }

@@ -17,11 +17,11 @@ public class CharacterSystem : MonoBehaviour
     private Collider2D hitCollider;
 
     void Awake() {
-        if (instance == null) {
-            instance = this;
-        } else if (instance != this) {
-            Destroy(gameObject);
-        }
+        // if (instance == null) {
+        //     instance = this;
+        // } else if (instance != this) {
+        //     Destroy(gameObject);
+        // }
     }
 
     void Start()

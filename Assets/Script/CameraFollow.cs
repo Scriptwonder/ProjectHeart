@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 
 public class CameraFollow : MonoBehaviour
@@ -10,6 +11,16 @@ public class CameraFollow : MonoBehaviour
     private Vector3 velocity = Vector3.zero;
     public float smoothTime = 0.3f;
 
+    public static CameraFollow instance = null;
+
+    void Awake() {
+        if (instance == null) {
+            instance = this;
+        } else if (instance != this) {
+            Destroy(gameObject);
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -17,7 +28,11 @@ public class CameraFollow : MonoBehaviour
         transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
     }
 
-    void swapTarget() {
+    public void swapTarget() {
+        target.gameObject.GetComponent<CharacterController>().enabled = false;
+        target2.gameObject.GetComponent<CharacterController>().enabled = true;
+        // target.gameObject.SetActive(false);
+        // target2.gameObject.SetActive(true);
         Transform temp = target2;
         target2 = target;
         target = temp;

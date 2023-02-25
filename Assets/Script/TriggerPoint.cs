@@ -19,13 +19,15 @@ public class TriggerPoint : MonoBehaviour
     }
 
     void OnTriggerEnter2D (Collider2D col) {
-        int sceneId = CharacterSystem.instance.sceneId;
+        CharacterSystem characterSystem = col.gameObject.GetComponent<CharacterSystem>();
+        int sceneId = characterSystem.sceneId;
         if (isEndPoint && (col.gameObject.tag == "Player")) {
             if (sceneId == 0 && sceneId == 1) {
                 SceneManager.LoadScene("scene" + (sceneId+1));
             } else {
                 //play animation and show the transformation
                 //TODO
+                
             }
 
         }
