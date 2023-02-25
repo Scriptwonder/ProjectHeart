@@ -66,6 +66,7 @@ public class IdleWalkRun : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.C)) {
                 mAnimator.SetTrigger("Dash");
+                mAnimator.SetTrigger("DoubleJump");
             }
 
             if (Input.GetKeyDown(KeyCode.V)) {
@@ -74,6 +75,10 @@ public class IdleWalkRun : MonoBehaviour
 
             if (Input.GetKeyDown(KeyCode.B)) {
                 mAnimator.SetTrigger("WallJump");
+            }
+
+            if (Input.GetKeyDown(KeyCode.N)) {
+                mAnimator.SetTrigger("DownSmash");
             }
         }
     }
