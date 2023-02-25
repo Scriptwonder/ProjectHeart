@@ -72,6 +72,7 @@ public class CharacterController : MonoBehaviour
 
         if (isGrounded) {
             isJumping = false;
+            int characterId = CharacterSystem.instance.characterId;
             jumpNum = characterId == 0 ? 1 : 2;
             //mAnimator.SetTrigger("contact");
         }
@@ -87,7 +88,7 @@ public class CharacterController : MonoBehaviour
         isDashing = true;
         dashTime = Time.time + dashDuration;
         rb.velocity = new Vector2(rb.velocity.x, 0);
-        rb.AddForce(new Vector2(moveHorizontal * dashForce, jumpForce));
+        rb.AddForce(new Vector2(moveHorizontal * dashForce, 0));
         //play animation TODO
     }
 
