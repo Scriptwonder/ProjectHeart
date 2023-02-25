@@ -63,3 +63,7 @@ crashlytics-build.properties
 
 # don't mix UserSettings
 UserSettings/
+
+# NuGet and TMP
+NuGet/
+Assets/TextMesh\ Pro
