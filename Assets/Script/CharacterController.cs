@@ -147,11 +147,11 @@ public class CharacterController : MonoBehaviour
             if (moveHorizontal < 0) {
                 mAnimator.SetTrigger("StartWalk");
                 isFacingRight = false;
-                transform.localScale = new Vector2(-1, transform.localScale.y);
+                transform.localScale = new Vector2(-1.5f, transform.localScale.y);
             } else if (moveHorizontal > 0) {
                 mAnimator.SetTrigger("StartWalk");
                 isFacingRight = true;
-                transform.localScale = new Vector2(1, transform.localScale.y);
+                transform.localScale = new Vector2(1.5f, transform.localScale.y);
             } else {
                 mAnimator.SetTrigger("WalkIdle");
             }
@@ -166,7 +166,9 @@ public class CharacterController : MonoBehaviour
                 isJumping = false;
                 int characterId = characterSystem.characterId;
                 jumpNum = characterId == 0 ? 1 : 2;
-                mAnimator.SetTrigger("contact");
+                mAnimator.SetTrigger("Contact");
+            } else {
+                mAnimator.ResetTrigger("Contact");
             }
 
             WallSlide();
@@ -274,12 +276,12 @@ public class CharacterController : MonoBehaviour
 
     private bool IsGrounded()
     {
-        return Physics2D.OverlapCircle(groundCheck.position, 1f, groundLayer);
+        return Physics2D.OverlapCircle(groundCheck.position, 0.25f, groundLayer);
     }
 
     private bool IsWalled()
     {
-        return Physics2D.OverlapCircle(wallCheck.position, 1f, wallLayer);
+        return Physics2D.OverlapCircle(wallCheck.position, 0.25f, wallLayer);
     }
 
     private void WallSlide()
