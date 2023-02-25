@@ -488,7 +488,6 @@ GameObject:
   - component: {fileID: 528402541}
   - component: {fileID: 528402540}
   - component: {fileID: 528402539}
-  - component: {fileID: 528402542}
   m_Layer: 5
   m_Name: PlayGame
   m_TagString: Untagged
@@ -546,7 +545,7 @@ MonoBehaviour:
     m_ColorMultiplier: 1
     m_FadeDuration: 0.1
   m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
+    m_HighlightedSprite: {fileID: -293494909, guid: e664c47b139134c45a28b4fddc12a3a7, type: 3}
     m_PressedSprite: {fileID: 0}
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
@@ -593,7 +592,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 181184307, guid: a5b9f643b63fc024297e91060a09318e, type: 3}
+  m_Sprite: {fileID: 1310349625, guid: e664c47b139134c45a28b4fddc12a3a7, type: 3}
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
@@ -611,26 +610,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 528402537}
   m_CullTransparentMesh: 1
---- !u!95 &528402542
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 528402537}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d484301a5578ba94aa8057e033f96ddd, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &729086601
 GameObject:
   m_ObjectHideFlags: 0
