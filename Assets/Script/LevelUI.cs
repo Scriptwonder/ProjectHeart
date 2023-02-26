@@ -25,8 +25,8 @@ public class LevelUI : MonoBehaviour
     {
         if (id == 0)
         {
-            levelOneBar.SetActive(false);
-            levelTwoBar.SetActive(true);
+            levelOneBar.SetActive(true);
+            levelTwoBar.SetActive(false);
         }
         else if (id == 1)
         {
