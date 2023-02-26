@@ -64,21 +64,21 @@ public class PauseMenu : MonoBehaviour
             levelOnePause.SetActive(true);
             levelTwoPause.SetActive(false);
             levelThreePause.SetActive(false);
-            pauseText.text = "<color=#c5edd5>Paused";
+            pauseText.GetComponent<TextMeshProUGUI>().faceColor = new Color32(197, 237, 213, 255);
         }
         else if (id == 1)
         {
             levelOnePause.SetActive(false);
             levelTwoPause.SetActive(true);
             levelThreePause.SetActive(false);
-            pauseText.text = "<color=#aeaee2>Paused";
+            pauseText.GetComponent<TextMeshProUGUI>().faceColor = new Color32(174, 174, 226, 255);
         }
         else if (id == 2)
         {
             levelOnePause.SetActive(false);
             levelTwoPause.SetActive(false);
             levelThreePause.SetActive(true);
-            pauseText.text = "<color=#fff96c>Paused";
+            pauseText.GetComponent<TextMeshProUGUI>().faceColor = new Color32(255, 249, 108, 255);
         }
     }
 }
