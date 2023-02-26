@@ -51,11 +51,10 @@ public class CharacterController : MonoBehaviour
 
     private bool isJumping = false;
     public float jumpForce = 500f;
-    private bool isGrounded = true;
-    private int jumpNum = 2;
+    [SerializeField] private int jumpNum;
 
     private bool isFacingRight = true;
-
+    private bool canTestJump = true;
 
     private Rigidbody2D rb;
     private Animator mAnimator;
@@ -101,10 +100,11 @@ public class CharacterController : MonoBehaviour
         else if (characterId == 1)
         {
             canDash = false;
+            canLongDash = false;
             canWallJump = true;
             canWallSlide = true;
             canDownBurst = true;
-            //jumpNum = 2;
+            jumpNum = 2;
         }
         else if (characterId == 2)
         {
@@ -113,7 +113,7 @@ public class CharacterController : MonoBehaviour
             canWallSlide = true;
             canLongDash = true;
             canDownBurst = true;
-            //jumpNum = 2;
+            jumpNum = 2;
         }
     }
 
@@ -131,13 +131,13 @@ public class CharacterController : MonoBehaviour
 
             if (Input.GetButtonDown("Jump") && jumpNum > 0)
             {
-                //Debug.Log("Jump" + jumpNum);
                 //rb.AddForce(new Vector2(0, jumpForce));
                 mAnimator.SetTrigger("Jump");
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
                 isJumping = true;
-                isGrounded = false;
                 jumpNum--;
+                canTestJump = false;
+                StartCoroutine(delayHalf());
             }
 
             if (Input.GetKeyDown(KeyCode.Z) && canLongDash && !isLongDashing)
@@ -187,7 +187,6 @@ public class CharacterController : MonoBehaviour
             {
                 mAnimator.SetTrigger("WalkIdle");
             }
-            isGrounded = IsGrounded();
 
             if (isDashing && Time.time >= dashTime)
             {
@@ -195,13 +194,12 @@ public class CharacterController : MonoBehaviour
                 rb.velocity = new Vector2(rb.velocity.x, 0);
             }
 
-
-
-            if (IsGrounded())
+            if (IsGrounded() && canTestJump)
             {
                 isJumping = false;
                 int characterId = characterSystem.characterId;
                 jumpNum = characterId == 0 ? 1 : 2;
+                //Debug.Log("called");
                 mAnimator.SetTrigger("Contact");
             }
             else
@@ -232,6 +230,11 @@ public class CharacterController : MonoBehaviour
                 rb.gravityScale = 1.0f;
             }
         }
+    }
+
+    IEnumerator delayHalf() {
+        yield return new WaitForSeconds(0.25f);
+        canTestJump = true;
     }
 
     // Update is called once per frame
@@ -275,7 +278,6 @@ public class CharacterController : MonoBehaviour
         mAnimator.SetTrigger("Dash");
         if (!isNearWall)
         {
-            Debug.Log("hi");
             rb.gravityScale = 0.0f;
             isLongDashing = true;
         }
@@ -367,12 +369,12 @@ public class CharacterController : MonoBehaviour
 
     private bool IsGrounded()
     {
-        return Physics2D.OverlapCircle(groundCheck.position, 0.25f, groundLayer);
+        return Physics2D.OverlapCircle(groundCheck.position, 0.15f, groundLayer);
     }
 
     private bool IsWalled()
     {
-        return Physics2D.OverlapCircle(wallCheck.position, 0.25f, wallLayer);
+        return Physics2D.OverlapCircle(wallCheck.position, 0.1f, wallLayer);
     }
 
     private void WallSlide()

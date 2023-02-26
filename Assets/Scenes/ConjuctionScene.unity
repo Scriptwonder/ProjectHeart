@@ -39435,6 +39435,7 @@ MonoBehaviour:
   dashTime: 0
   specialDuration: 2
   jumpForce: 7
+  jumpNum: 2
   playerCollider: {fileID: 927767189}
 --- !u!50 &927767188
 Rigidbody2D:
@@ -39824,7 +39825,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneId: 0
-  characterId: 2
+  characterId: 0
   playerHit: 0
   characterController: {fileID: 1052049620}
   startPoint: {fileID: 1257775858}
@@ -39856,6 +39857,7 @@ MonoBehaviour:
   dashTime: 0
   specialDuration: 2
   jumpForce: 7
+  jumpNum: 2
   playerCollider: {fileID: 1052049622}
 --- !u!50 &1052049621
 Rigidbody2D:
