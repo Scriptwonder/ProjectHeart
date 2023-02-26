@@ -18,6 +18,7 @@ public class CharacterController : MonoBehaviour
     private float moveHorizontal;
 
     private bool canDash = true;
+    public bool canSwap = true;
     private bool canLongDash = true;
     private bool canWallJump = true;
     private bool canWallSlide = true;
@@ -142,7 +143,7 @@ public class CharacterController : MonoBehaviour
                 characterSystem.restart();
             }
 
-            if (Input.GetKeyDown(KeyCode.Q)) {
+            if (Input.GetKeyDown(KeyCode.Q) && canSwap) {
                 CameraFollow.instance.swapTarget();
             }
 
