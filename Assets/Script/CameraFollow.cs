@@ -13,10 +13,14 @@ public class CameraFollow : MonoBehaviour
 
     public static CameraFollow instance = null;
 
-    void Awake() {
-        if (instance == null) {
+    void Awake()
+    {
+        if (instance == null)
+        {
             instance = this;
-        } else if (instance != this) {
+        }
+        else if (instance != this)
+        {
             Destroy(gameObject);
         }
     }
@@ -28,7 +32,8 @@ public class CameraFollow : MonoBehaviour
         transform.position = Vector3.SmoothDamp(transform.position, targetPosition, ref velocity, smoothTime);
     }
 
-    public void swapTarget() {
+    public void swapTarget()
+    {
         target.gameObject.GetComponent<CharacterController>().enabled = false;
         target2.gameObject.GetComponent<CharacterController>().enabled = true;
         // target.gameObject.SetActive(false);
