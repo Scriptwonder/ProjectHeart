@@ -37280,7 +37280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneId: 0
-  characterId: 0
+  characterId: 2
   playerHit: 0
   characterController: {fileID: 1052049620}
   startPoint: {fileID: 1257775858}

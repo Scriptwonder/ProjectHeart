@@ -6,6 +6,7 @@ public class PauseMenu : MonoBehaviour
 {
     public GameObject levelOnePause;
     public GameObject levelTwoPause;
+    public GameObject levelThreePause;
     private GameObject character;
     private int characterId;
 
@@ -49,11 +50,19 @@ public class PauseMenu : MonoBehaviour
         {
             levelOnePause.SetActive(true);
             levelTwoPause.SetActive(false);
+            levelThreePause.SetActive(false);
         }
         else if (id == 1)
         {
             levelOnePause.SetActive(false);
             levelTwoPause.SetActive(true);
+            levelThreePause.SetActive(false);
+        }
+        else if (id == 2)
+        {
+            levelOnePause.SetActive(false);
+            levelTwoPause.SetActive(false);
+            levelThreePause.SetActive(true);
         }
     }
 }
