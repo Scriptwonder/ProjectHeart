@@ -13,6 +13,7 @@ public class CharacterController : MonoBehaviour
     public float groundRadius = 0.2f;
 
     private CharacterSystem characterSystem;
+    private AudioSource audioSource;
 
     public float speed = 10f;
     private float moveHorizontal;
@@ -75,6 +76,7 @@ public class CharacterController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         mAnimator = GetComponent<Animator>();
         characterSystem = GetComponent<CharacterSystem>();
+        audioSource = GetComponent<AudioSource>();
         int characterId = characterSystem.characterId;
         switchId(characterId);
     }
@@ -143,6 +145,8 @@ public class CharacterController : MonoBehaviour
             if (Input.GetKeyDown(KeyCode.Z) && canLongDash && !isLongDashing)
             {
                 disableAllBool();
+                audioSource.Play();
+
                 longDash();
             }
 
