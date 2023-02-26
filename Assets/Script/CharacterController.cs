@@ -38,12 +38,15 @@ public class CharacterController : MonoBehaviour
     public float dashDuration = 0.5f;
     public float dashTime;
 
-    private float wallSlidingSpeed = 20f;
+    private float specialTime;
+    public float specialDuration = 2f;
+
+    private float wallSlidingSpeed = 10f;
     private float wallJumpingDirection;
-    private float wallJumpingTime = 0.2f;
-    private float wallJumpingDuration = 0.4f;
+    private float wallJumpingTime = 0.4f;
+    private float wallJumpingDuration = 0.8f;
     private float wallJumpingCounter;
-    private Vector2 wallJumpingPower = new Vector2(2f, 4f);
+    private Vector2 wallJumpingPower = new Vector2(2f, 8f);
 
     private bool isJumping = false;
     public float jumpForce = 500f;
@@ -147,11 +150,11 @@ public class CharacterController : MonoBehaviour
             if (moveHorizontal < 0) {
                 mAnimator.SetTrigger("StartWalk");
                 isFacingRight = false;
-                transform.localScale = new Vector2(-1.5f, transform.localScale.y);
+                transform.localScale = new Vector2(-1.75f, transform.localScale.y);
             } else if (moveHorizontal > 0) {
                 mAnimator.SetTrigger("StartWalk");
                 isFacingRight = true;
-                transform.localScale = new Vector2(1.5f, transform.localScale.y);
+                transform.localScale = new Vector2(1.75f, transform.localScale.y);
             } else {
                 mAnimator.SetTrigger("WalkIdle");
             }
@@ -161,6 +164,8 @@ public class CharacterController : MonoBehaviour
                 isDashing = false;
                 rb.velocity = new Vector2(rb.velocity.x, 0);
             }
+
+            
 
             if (IsGrounded()) {
                 isJumping = false;
@@ -176,6 +181,18 @@ public class CharacterController : MonoBehaviour
             if (!isWallJumping) {
                 Flip();
             }
+        } else {
+            if (isDownBursting && Time.time >= specialTime) {
+                isDownBursting = false;
+                rb.velocity = new Vector2(0, 0);
+                rb.gravityScale = 1.0f;
+            }
+
+            if (isLongDashing && Time.time >= specialTime) {
+                isLongDashing = false;
+                rb.velocity = new Vector2(0, 0);
+                rb.gravityScale = 1.0f;
+            }
         }
     }
 
@@ -184,9 +201,11 @@ public class CharacterController : MonoBehaviour
     {
         if (isLongDashing || isDownBursting) {
             if (isLongDashing) {
-                rb.AddForce(new Vector2(transform.localScale.x * LongDashSpeed, 0));
+                //rb.AddForce(new Vector2(transform.localScale.x * LongDashSpeed, 0));
+                rb.velocity = new Vector2(transform.localScale.x * LongDashSpeed, 0);
             } else if (isDownBursting) {
-                rb.AddForce(new Vector2(0, -1 * transform.localScale.x * DownBurstSpeed));
+                //rb.AddForce(new Vector2(0, -1 * transform.localScale.x * DownBurstSpeed));
+                rb.velocity = new Vector2(0, -1 * transform.localScale.x * DownBurstSpeed);
             }
             return;
         }
@@ -197,18 +216,19 @@ public class CharacterController : MonoBehaviour
     }
 
     public void downBurst() {
+        specialTime = Time.time + specialDuration;
         mAnimator.SetTrigger("DownSmash");
         if (!isNearGround) {
-            
             rb.gravityScale = 0.0f;
             isDownBursting = true;
         }
     }
 
     public void longDash() {
+        specialTime = Time.time + specialDuration;
         mAnimator.SetTrigger("Dash");
         if (!isNearWall) {
-            
+            Debug.Log("hi");
             rb.gravityScale = 0.0f;
             isLongDashing = true;
         }
@@ -228,6 +248,7 @@ public class CharacterController : MonoBehaviour
         }
         //destroy gameobject if object is breakable
         if (collision.gameObject.CompareTag("Breakable")) {
+            Debug.Log("hello");
             //TODO: play animation
             if (isDownBursting || isLongDashing) {
                 Destroy(collision.gameObject);
@@ -237,7 +258,9 @@ public class CharacterController : MonoBehaviour
 
         //stop if ground object
         if (collision.gameObject.layer == 6 || collision.gameObject.layer == 7) {
-            if (isDownBursting || isLongDashing) {
+            
+            if (isDownBursting || isLongDashing ) {
+                Debug.Log("yooo");
                 rb.velocity = new Vector2(0f, 0f);
                 isDownBursting = false;
                 isLongDashing = false;
