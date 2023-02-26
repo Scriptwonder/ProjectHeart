@@ -284,6 +284,13 @@ public class CharacterController : MonoBehaviour
         //play animation TODO
     }
 
+    public void StopMovement()
+    {
+        moveHorizontal = 0;
+        rb.velocity = new Vector2(0f, 0f);
+        mAnimator.SetTrigger("WalkIdle");
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("OneWayPlatform"))

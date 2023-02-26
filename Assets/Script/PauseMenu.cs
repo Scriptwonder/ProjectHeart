@@ -12,21 +12,22 @@ public class PauseMenu : MonoBehaviour
 
     void Start()
     {
-        setActiveCharacter();
-        characterId = getActiveId();
-        updateBar(characterId);
+        SetActiveCharacter();
+        characterId = GetActiveId();
+        UpdateBar(characterId);
     }
 
     void Update()
     {
-        setActiveCharacter();
-        characterId = getActiveId();
-        updateBar(characterId);
+        SetActiveCharacter();
+        characterId = GetActiveId();
+        UpdateBar(characterId);
     }
 
     public void RestartLevelButton()
     {
         character.GetComponent<CharacterSystem>().restart();
+        character.GetComponent<CharacterController>().enabled = true;
     }
 
     public void ExitLevelButton()
@@ -39,17 +40,22 @@ public class PauseMenu : MonoBehaviour
         character.GetComponent<CharacterController>().enabled = !character.GetComponent<CharacterController>().enabled;
     }
 
-    private void setActiveCharacter()
+    public void StopCharacterMovement()
+    {
+        character.GetComponent<CharacterController>().StopMovement();
+    }
+
+    private void SetActiveCharacter()
     {
         character = CameraFollow.instance.target.gameObject;
     }
 
-    private int getActiveId()
+    private int GetActiveId()
     {
         return character.GetComponent<CharacterSystem>().characterId;
     }
 
-    private void updateBar(int id)
+    private void UpdateBar(int id)
     {
         if (id == 0)
         {
