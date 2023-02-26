@@ -1296,6 +1296,7 @@ MonoBehaviour:
   levelOnePause: {fileID: 1603189186715984066}
   levelTwoPause: {fileID: 1603189186673147564}
   levelThreePause: {fileID: 3690791262148766154}
+  pauseText: {fileID: 1603189187012742582}
 --- !u!1 &1603189187012742580
 GameObject:
   m_ObjectHideFlags: 0

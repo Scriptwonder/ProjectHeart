@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PauseMenu : MonoBehaviour
 {
     public GameObject levelOnePause;
     public GameObject levelTwoPause;
     public GameObject levelThreePause;
+    public TMP_Text pauseText;
     private GameObject character;
     private int characterId;
 
@@ -62,18 +64,21 @@ public class PauseMenu : MonoBehaviour
             levelOnePause.SetActive(true);
             levelTwoPause.SetActive(false);
             levelThreePause.SetActive(false);
+            pauseText.text = "<color=#c5edd5>Paused";
         }
         else if (id == 1)
         {
             levelOnePause.SetActive(false);
             levelTwoPause.SetActive(true);
             levelThreePause.SetActive(false);
+            pauseText.text = "<color=#aeaee2>Paused";
         }
         else if (id == 2)
         {
             levelOnePause.SetActive(false);
             levelTwoPause.SetActive(false);
             levelThreePause.SetActive(true);
+            pauseText.text = "<color=#fff96c>Paused";
         }
     }
 }
