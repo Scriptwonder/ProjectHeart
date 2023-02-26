@@ -1233,8 +1233,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 0}
-  levelOnePause: {fileID: 0}
-  levelTwoPause: {fileID: 0}
+  levelOnePause: {fileID: 1603189186715984066}
+  levelTwoPause: {fileID: 1603189186673147564}
 --- !u!1 &1603189187012742580
 GameObject:
   m_ObjectHideFlags: 0

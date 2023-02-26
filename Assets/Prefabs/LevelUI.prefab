@@ -422,5 +422,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   character: {fileID: 0}
-  levelOneBar: {fileID: 0}
-  levelTwoBar: {fileID: 0}
+  levelOneBar: {fileID: 4839195795030635853}
+  levelTwoBar: {fileID: 2231712326289039643}
