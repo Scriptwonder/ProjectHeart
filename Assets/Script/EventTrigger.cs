@@ -10,6 +10,8 @@ public class EventTrigger : MonoBehaviour
     public SpriteRenderer sprite;
     private int totalPlayer = 0;
     public GameObject image;
+    public GameObject character1;
+    public GameObject character2;
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +40,10 @@ public class EventTrigger : MonoBehaviour
 
             videoPlayer.enabled = true;
             videoPlayer.Play();
+            character1.GetComponent<CharacterController>().enabled = false;
+            character1.GetComponent<CharacterController>().StopMovement();
+            character2.GetComponent<CharacterController>().enabled = false;
+            character2.GetComponent<CharacterController>().StopMovement();
             StartCoroutine(justTwoSecs());
             //sprite.enabled = true;
             //sprite.color = new Color(1f,1f,1f,1f);
@@ -49,6 +55,7 @@ public class EventTrigger : MonoBehaviour
         sprite.enabled = true;
         yield return new WaitForSeconds(12f);
         image.SetActive(true);
+        yield return new WaitForSeconds(3f);
         SceneManager.LoadScene("3rd Level");
     }
 

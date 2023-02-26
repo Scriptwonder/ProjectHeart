@@ -39500,6 +39500,8 @@ MonoBehaviour:
   videoPlayer: {fileID: 896823010}
   sprite: {fileID: 896823012}
   image: {fileID: 1004103718}
+  character1: {fileID: 1052049616}
+  character2: {fileID: 927767183}
 --- !u!1 &920628633
 GameObject:
   m_ObjectHideFlags: 0
