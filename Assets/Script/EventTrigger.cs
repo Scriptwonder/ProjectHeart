@@ -23,11 +23,13 @@ public class EventTrigger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    void OnTriggerEnter2D(Collider2D col) {
-        if (col.gameObject.tag == "Player" && totalPlayer != 1) {
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.gameObject.tag == "Player" && totalPlayer != 1)
+        {
             CharacterController characterSystem = col.gameObject.GetComponent<CharacterController>();
             characterSystem.enabled = false;
             characterSystem.resetSpeed();
@@ -35,7 +37,9 @@ public class EventTrigger : MonoBehaviour
             CameraFollow.instance.target2.gameObject.GetComponent<CharacterController>().canSwap = false;
             CameraFollow.instance.swapTarget();
             totalPlayer++;
-        } else {
+        }
+        else
+        {
             //playEvent
 
             videoPlayer.enabled = true;
@@ -50,14 +54,13 @@ public class EventTrigger : MonoBehaviour
         }
     }
 
-    IEnumerator justTwoSecs() {
-        yield return new WaitForSeconds(1.25f);
+    IEnumerator justTwoSecs()
+    {
+        yield return new WaitForSeconds(0.25f);
         sprite.enabled = true;
         yield return new WaitForSeconds(12f);
         image.SetActive(true);
         yield return new WaitForSeconds(3f);
         SceneManager.LoadScene("3rd Level");
     }
-
-
 }

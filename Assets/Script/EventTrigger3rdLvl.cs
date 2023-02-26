@@ -45,13 +45,13 @@ public class EventTrigger3rdLvl : MonoBehaviour
 
     IEnumerator justTwoSecs()
     {
-        yield return new WaitForSeconds(1.25f);
+        yield return new WaitForSeconds(0.25f);
         sprite.enabled = true;
         yield return new WaitForSeconds(6f);
         image.SetActive(true);
         yield return new WaitForSeconds(3f);
         thankYouText.SetActive(true);
-        yield return new WaitForSeconds(6f);
+        yield return new WaitForSeconds(4f);
         SceneManager.LoadScene("MainMenu");
     }
 
