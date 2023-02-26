@@ -27076,6 +27076,7 @@ MonoBehaviour:
   dashTime: 0
   specialDuration: 2
   jumpForce: 7
+  jumpNum: 2
   playerCollider: {fileID: 1482854484}
 --- !u!50 &1482854483
 Rigidbody2D:
@@ -27132,7 +27133,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1482854478}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 44.01, y: 8.08, z: 0}
+  m_LocalPosition: {x: -4.09, y: -2.09, z: 0}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -27390,7 +27391,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1655160904}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.21, z: 0}
+  m_LocalPosition: {x: -4.29, y: -1.48, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -27433,7 +27434,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   inOrOut: 0
   fadeOutImage: {fileID: 1694908102}
-  FadeRate: 0.75
+  FadeRate: 1
 --- !u!114 &1694908102
 MonoBehaviour:
   m_ObjectHideFlags: 0
