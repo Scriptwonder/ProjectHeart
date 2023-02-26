@@ -282,6 +282,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 6584628139796492045, guid: e179e555596837944810088ce20c74aa, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 750
+      objectReference: {fileID: 0}
+    - target: {fileID: 6584628139796492045, guid: e179e555596837944810088ce20c74aa, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 6584628139796492045, guid: e179e555596837944810088ce20c74aa, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 375
+      objectReference: {fileID: 0}
+    - target: {fileID: 6584628139796492045, guid: e179e555596837944810088ce20c74aa, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -192
+      objectReference: {fileID: 0}
     - target: {fileID: 6584628141174706069, guid: e179e555596837944810088ce20c74aa, type: 3}
       propertyPath: m_Name
       value: Canvas
