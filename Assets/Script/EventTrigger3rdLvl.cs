@@ -11,6 +11,8 @@ public class EventTrigger3rdLvl : MonoBehaviour
     private int totalPlayer = 0;
     public GameObject image;
     public GameObject character;
+
+    public GameObject thankYouText;
     // Start is called before the first frame update
     void Start()
     {
@@ -22,11 +24,12 @@ public class EventTrigger3rdLvl : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    void OnTriggerEnter2D(Collider2D col) {
-    
+    void OnTriggerEnter2D(Collider2D col)
+    {
+
         //playEvent
 
         videoPlayer.enabled = true;
@@ -40,12 +43,15 @@ public class EventTrigger3rdLvl : MonoBehaviour
         //sprite.color = new Color(1f,1f,1f,1f);
     }
 
-    IEnumerator justTwoSecs() {
+    IEnumerator justTwoSecs()
+    {
         yield return new WaitForSeconds(1.25f);
         sprite.enabled = true;
         yield return new WaitForSeconds(6f);
         image.SetActive(true);
         yield return new WaitForSeconds(3f);
+        thankYouText.SetActive(true);
+        yield return new WaitForSeconds(6f);
         SceneManager.LoadScene("MainMenu");
     }
 
