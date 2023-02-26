@@ -2083,7 +2083,7 @@ GameObject:
   - component: {fileID: 428957217}
   - component: {fileID: 428957216}
   m_Layer: 5
-  m_Name: FadeIn1
+  m_Name: FadeTransitions
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2218,7 +2218,7 @@ RectTransform:
   - {fileID: 2129715102}
   - {fileID: 1004103719}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -39154,7 +39154,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &896823014
 MonoBehaviour:
@@ -39514,7 +39514,7 @@ GameObject:
   - component: {fileID: 1004103721}
   - component: {fileID: 1004103720}
   m_Layer: 5
-  m_Name: Image2
+  m_Name: FadeOut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39538,7 +39538,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0.000030518, y: 0}
-  m_SizeDelta: {x: 823, y: 352}
+  m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1004103720
 MonoBehaviour:
@@ -40195,7 +40195,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1224492569
 GameObject:
@@ -40421,7 +40421,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -40796,7 +40796,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6584628141174706153, guid: e179e555596837944810088ce20c74aa, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6584628141174706153, guid: e179e555596837944810088ce20c74aa, type: 3}
       propertyPath: m_AnchorMax.x
@@ -42573,7 +42573,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1603189186845212887, guid: 48325ff5bb7af924698187308f7ba0d3, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 1603189186845212887, guid: 48325ff5bb7af924698187308f7ba0d3, type: 3}
       propertyPath: m_AnchorMax.x
@@ -72185,7 +72185,7 @@ GameObject:
   - component: {fileID: 2129715104}
   - component: {fileID: 2129715103}
   m_Layer: 5
-  m_Name: Image1
+  m_Name: FadeIn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72209,7 +72209,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0.000030518, y: 0}
-  m_SizeDelta: {x: 823, y: 352}
+  m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2129715103
 MonoBehaviour:
