@@ -6,7 +6,7 @@ public class MainMenu : MonoBehaviour
 {
     public void PlayGameButton()
     {
-        UnityEngine.SceneManagement.SceneManager.LoadScene("Level1");
+        UnityEngine.SceneManagement.SceneManager.LoadScene("ConjuctionScene");
     }
 
     public void ExitGameButton()
