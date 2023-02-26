@@ -97,6 +97,7 @@ public class CharacterController : MonoBehaviour
         {
             canDash = true;
             canLongDash = true;
+            canDownBurst = false;
             jumpNum = 1;
         }
         else if (characterId == 1)
