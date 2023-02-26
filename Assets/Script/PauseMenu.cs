@@ -4,33 +4,43 @@ using UnityEngine;
 
 public class PauseMenu : MonoBehaviour
 {
-    public GameObject character;
     public GameObject levelOnePause;
     public GameObject levelTwoPause;
-    private CharacterSystem system;
+    private GameObject character;
     private int characterId;
 
     void Start()
     {
-        system = character.GetComponent<CharacterSystem>();
-        characterId = character.GetComponent<CharacterSystem>().characterId;
+        setActiveCharacter();
+        characterId = getActiveId();
         updateBar(characterId);
     }
 
     void Update()
     {
-        characterId = character.GetComponent<CharacterSystem>().characterId;
+        setActiveCharacter();
+        characterId = getActiveId();
         updateBar(characterId);
     }
 
     public void RestartLevelButton()
     {
-        system.restart();
+        character.GetComponent<CharacterSystem>().restart();
     }
 
     public void ExitLevelButton()
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
+    }
+
+    private void setActiveCharacter()
+    {
+        character = CameraFollow.instance.target.gameObject;
+    }
+
+    private int getActiveId()
+    {
+        return character.GetComponent<CharacterSystem>().characterId;
     }
 
     private void updateBar(int id)

@@ -4,21 +4,25 @@ using UnityEngine;
 
 public class LevelUI : MonoBehaviour
 {
-    public GameObject character;
     public GameObject levelOneBar;
     public GameObject levelTwoBar;
     private int characterId;
 
     void Start()
     {
-        characterId = character.GetComponent<CharacterSystem>().characterId;
+        characterId = getActiveId();
         updateBar(characterId);
     }
 
     void Update()
     {
-        characterId = character.GetComponent<CharacterSystem>().characterId;
+        characterId = getActiveId();
         updateBar(characterId);
+    }
+
+    private int getActiveId()
+    {
+        return CameraFollow.instance.target.gameObject.GetComponent<CharacterSystem>().characterId;
     }
 
     private void updateBar(int id)
