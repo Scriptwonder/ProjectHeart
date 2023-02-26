@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Breakable
+  - New tag
+  - OneWayPlatform
   layers:
   - Default
   - TransparentFX
