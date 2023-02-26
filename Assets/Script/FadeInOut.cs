@@ -7,7 +7,7 @@ public class FadeInOut : MonoBehaviour
 {
     public bool inOrOut = false;
     public Image fadeOutImage;
-    public float FadeRate = 0.01f;
+    public float FadeRate = 0.75f;
      
     private bool isFading = false;
 
@@ -46,5 +46,7 @@ public class FadeInOut : MonoBehaviour
             fadeOutImage.color = curColor;
             yield return null;
         }
+        yield return new WaitForSeconds(1f);
+        Destroy(gameObject);
     }
 }

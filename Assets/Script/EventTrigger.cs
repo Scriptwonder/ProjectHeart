@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
+using UnityEngine.SceneManagement;
 
 public class EventTrigger : MonoBehaviour
 {
     public VideoPlayer videoPlayer;
     public SpriteRenderer sprite;
     private int totalPlayer = 0;
+    public GameObject image;
     // Start is called before the first frame update
     void Start()
     {
@@ -45,5 +47,10 @@ public class EventTrigger : MonoBehaviour
     IEnumerator justTwoSecs() {
         yield return new WaitForSeconds(1.25f);
         sprite.enabled = true;
+        yield return new WaitForSeconds(12f);
+        image.SetActive(true);
+        SceneManager.LoadScene("3rd Level");
     }
+
+
 }

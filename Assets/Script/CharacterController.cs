@@ -247,7 +247,7 @@ public class CharacterController : MonoBehaviour
             else if (isDownBursting)
             {
                 //rb.AddForce(new Vector2(0, -1 * transform.localScale.x * DownBurstSpeed));
-                rb.velocity = new Vector2(0, -1 * transform.localScale.x * DownBurstSpeed);
+                rb.velocity = new Vector2(0, -1 * Mathf.Abs(transform.localScale.x) * DownBurstSpeed);
             }
             return;
         }
@@ -306,7 +306,7 @@ public class CharacterController : MonoBehaviour
         //destroy gameobject if object is breakable
         if (collision.gameObject.CompareTag("Breakable"))
         {
-            Debug.Log("hello");
+            //Debug.Log("hello");
             //TODO: play animation
             if (isDownBursting || isLongDashing)
             {
@@ -321,7 +321,7 @@ public class CharacterController : MonoBehaviour
 
             if (isDownBursting || isLongDashing)
             {
-                Debug.Log("yooo");
+                //Debug.Log("yooo");
                 rb.velocity = new Vector2(0f, 0f);
                 isDownBursting = false;
                 isLongDashing = false;
