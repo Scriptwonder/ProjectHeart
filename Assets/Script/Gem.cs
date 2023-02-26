@@ -17,7 +17,7 @@ public class Gem : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D col) {
-        if (col.gameObject.tag.CompareTag("Player")) {
+        if (col.gameObject.tag == "Player") {
             Destroy(gameObject);
         }
     }
