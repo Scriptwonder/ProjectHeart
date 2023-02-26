@@ -34,6 +34,11 @@ public class PauseMenu : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene("MainMenu");
     }
 
+    public void ToggleCharacterMovement()
+    {
+        character.GetComponent<CharacterController>().enabled = !character.GetComponent<CharacterController>().enabled;
+    }
+
     private void setActiveCharacter()
     {
         character = CameraFollow.instance.target.gameObject;

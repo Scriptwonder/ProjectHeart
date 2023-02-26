@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CharacterController : MonoBehaviour
 {
-    
+
     [SerializeField] private Transform groundCheck;
     [SerializeField] private Transform wallCheck;
     [SerializeField] private LayerMask groundLayer;
@@ -74,7 +74,8 @@ public class CharacterController : MonoBehaviour
         switchId(characterId);
     }
 
-    void disableAllBool() {
+    void disableAllBool()
+    {
         bool isDashing = false;
         bool isLongDashing = false;
         bool isWallJumping = false;
@@ -83,18 +84,24 @@ public class CharacterController : MonoBehaviour
         bool isJumping = false;
     }
 
-    void switchId(int characterId) {
-        if (characterId == 0) {
+    void switchId(int characterId)
+    {
+        if (characterId == 0)
+        {
             canDash = true;
             canLongDash = true;
             jumpNum = 1;
-        } else if (characterId == 1) {
+        }
+        else if (characterId == 1)
+        {
             canDash = false;
             canWallJump = true;
             canWallSlide = true;
             canDownBurst = true;
             //jumpNum = 2;
-        } else if (characterId == 2) {
+        }
+        else if (characterId == 2)
+        {
             canDash = true;
             canWallJump = true;
             canWallSlide = true;
@@ -104,15 +111,20 @@ public class CharacterController : MonoBehaviour
         }
     }
 
-    void Update() {
-        if (!isLongDashing && !isDownBursting) {
-            if (Input.GetButtonDown("Jump") && Input.GetKey("down")) {
-                if (currentOneWayPlatform != null) {
+    void Update()
+    {
+        if (!isLongDashing && !isDownBursting)
+        {
+            if (Input.GetButtonDown("Jump") && Input.GetKey("down"))
+            {
+                if (currentOneWayPlatform != null)
+                {
                     StartCoroutine(DisableCollision());
                 }
             }
 
-            if (Input.GetButtonDown("Jump") && jumpNum > 0) {
+            if (Input.GetButtonDown("Jump") && jumpNum > 0)
+            {
                 //Debug.Log("Jump" + jumpNum);
                 //rb.AddForce(new Vector2(0, jumpForce));
                 mAnimator.SetTrigger("Jump");
@@ -122,74 +134,93 @@ public class CharacterController : MonoBehaviour
                 jumpNum--;
             }
 
-            if (Input.GetKeyDown(KeyCode.Z) && canLongDash && !isLongDashing) {
+            if (Input.GetKeyDown(KeyCode.Z) && canLongDash && !isLongDashing)
+            {
                 disableAllBool();
                 longDash();
             }
 
-            if (Input.GetKeyDown(KeyCode.X) && canDownBurst && !isDownBursting) {
+            if (Input.GetKeyDown(KeyCode.X) && canDownBurst && !isDownBursting)
+            {
                 disableAllBool();
                 downBurst();
             }
 
-            if (Input.GetKeyDown(KeyCode.LeftShift) && canDash && !isDashing) {
+            if (Input.GetKeyDown(KeyCode.LeftShift) && canDash && !isDashing)
+            {
                 disableAllBool();
                 isDashing = true;
                 dash();
             }
 
-            if (Input.GetKeyDown(KeyCode.F)) {
+            if (Input.GetKeyDown(KeyCode.F))
+            {
                 mAnimator.SetTrigger("WalkIdle");
                 characterSystem.restart();
             }
 
-            if (Input.GetKeyDown(KeyCode.Q) && canSwap) {
+            if (Input.GetKeyDown(KeyCode.Q) && canSwap)
+            {
                 CameraFollow.instance.swapTarget();
             }
 
             moveHorizontal = Input.GetAxis("Horizontal");
-            if (moveHorizontal < 0) {
+            if (moveHorizontal < 0)
+            {
                 mAnimator.SetTrigger("StartWalk");
                 isFacingRight = false;
                 transform.localScale = new Vector2(-1.75f, transform.localScale.y);
-            } else if (moveHorizontal > 0) {
+            }
+            else if (moveHorizontal > 0)
+            {
                 mAnimator.SetTrigger("StartWalk");
                 isFacingRight = true;
                 transform.localScale = new Vector2(1.75f, transform.localScale.y);
-            } else {
+            }
+            else
+            {
                 mAnimator.SetTrigger("WalkIdle");
             }
             isGrounded = IsGrounded();
 
-            if (isDashing && Time.time >= dashTime) {
+            if (isDashing && Time.time >= dashTime)
+            {
                 isDashing = false;
                 rb.velocity = new Vector2(rb.velocity.x, 0);
             }
 
-            
 
-            if (IsGrounded()) {
+
+            if (IsGrounded())
+            {
                 isJumping = false;
                 int characterId = characterSystem.characterId;
                 jumpNum = characterId == 0 ? 1 : 2;
                 mAnimator.SetTrigger("Contact");
-            } else {
+            }
+            else
+            {
                 mAnimator.ResetTrigger("Contact");
             }
 
             WallSlide();
             WallJump();
-            if (!isWallJumping) {
+            if (!isWallJumping)
+            {
                 Flip();
             }
-        } else {
-            if (isDownBursting && Time.time >= specialTime) {
+        }
+        else
+        {
+            if (isDownBursting && Time.time >= specialTime)
+            {
                 isDownBursting = false;
                 rb.velocity = new Vector2(0, 0);
                 rb.gravityScale = 1.0f;
             }
 
-            if (isLongDashing && Time.time >= specialTime) {
+            if (isLongDashing && Time.time >= specialTime)
+            {
                 isLongDashing = false;
                 rb.velocity = new Vector2(0, 0);
                 rb.gravityScale = 1.0f;
@@ -200,42 +231,52 @@ public class CharacterController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (isLongDashing || isDownBursting) {
-            if (isLongDashing) {
+        if (isLongDashing || isDownBursting)
+        {
+            if (isLongDashing)
+            {
                 //rb.AddForce(new Vector2(transform.localScale.x * LongDashSpeed, 0));
                 rb.velocity = new Vector2(transform.localScale.x * LongDashSpeed, 0);
-            } else if (isDownBursting) {
+            }
+            else if (isDownBursting)
+            {
                 //rb.AddForce(new Vector2(0, -1 * transform.localScale.x * DownBurstSpeed));
                 rb.velocity = new Vector2(0, -1 * transform.localScale.x * DownBurstSpeed);
             }
             return;
         }
 
-        if (!isWallJumping) {
+        if (!isWallJumping)
+        {
             rb.velocity = new Vector2(moveHorizontal * speed, rb.velocity.y);
         }
     }
 
-    public void downBurst() {
+    public void downBurst()
+    {
         specialTime = Time.time + specialDuration;
         mAnimator.SetTrigger("DownSmash");
-        if (!isNearGround) {
+        if (!isNearGround)
+        {
             rb.gravityScale = 0.0f;
             isDownBursting = true;
         }
     }
 
-    public void longDash() {
+    public void longDash()
+    {
         specialTime = Time.time + specialDuration;
         mAnimator.SetTrigger("Dash");
-        if (!isNearWall) {
+        if (!isNearWall)
+        {
             Debug.Log("hi");
             rb.gravityScale = 0.0f;
             isLongDashing = true;
         }
     }
 
-    public void dash() {
+    public void dash()
+    {
         isDashing = true;
         dashTime = Time.time + dashDuration;
         rb.velocity = new Vector2(rb.velocity.x, 0);
@@ -243,54 +284,67 @@ public class CharacterController : MonoBehaviour
         //play animation TODO
     }
 
-    private void OnCollisionEnter2D(Collision2D collision) {
-        if (collision.gameObject.CompareTag("OneWayPlatform")) {
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("OneWayPlatform"))
+        {
             currentOneWayPlatform = collision.gameObject;
         }
         //destroy gameobject if object is breakable
-        if (collision.gameObject.CompareTag("Breakable")) {
+        if (collision.gameObject.CompareTag("Breakable"))
+        {
             Debug.Log("hello");
             //TODO: play animation
-            if (isDownBursting || isLongDashing) {
+            if (isDownBursting || isLongDashing)
+            {
                 Destroy(collision.gameObject);
             }
         }
 
 
         //stop if ground object
-        if (collision.gameObject.layer == 6 || collision.gameObject.layer == 7) {
-            
-            if (isDownBursting || isLongDashing ) {
+        if (collision.gameObject.layer == 6 || collision.gameObject.layer == 7)
+        {
+
+            if (isDownBursting || isLongDashing)
+            {
                 Debug.Log("yooo");
                 rb.velocity = new Vector2(0f, 0f);
                 isDownBursting = false;
                 isLongDashing = false;
                 rb.gravityScale = 1.0f;
             }
-            if (collision.gameObject.layer == 6) {
+            if (collision.gameObject.layer == 6)
+            {
                 isNearGround = true;
             }
-            if (collision.gameObject.layer == 7) {
+            if (collision.gameObject.layer == 7)
+            {
                 isNearWall = true;
             }
         }
     }
 
-    private void OnCollisionExit2D(Collision2D collision) {
-        if (collision.gameObject.CompareTag("OneWayPlatform")) {
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("OneWayPlatform"))
+        {
             currentOneWayPlatform = null;
         }
 
-        if (collision.gameObject.layer == 6) {
+        if (collision.gameObject.layer == 6)
+        {
             isNearGround = false;
         }
-        if (collision.gameObject.layer == 7) {
+        if (collision.gameObject.layer == 7)
+        {
             isNearWall = false;
         }
 
     }
 
-    private IEnumerator DisableCollision() {
+    private IEnumerator DisableCollision()
+    {
         BoxCollider2D platformCollider = currentOneWayPlatform.GetComponent<BoxCollider2D>();
 
         Physics2D.IgnoreCollision(playerCollider, platformCollider);
