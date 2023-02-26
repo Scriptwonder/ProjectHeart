@@ -258,6 +258,8 @@ GameObject:
   m_Component:
   - component: {fileID: 53658609}
   - component: {fileID: 53658608}
+  - component: {fileID: 53658611}
+  - component: {fileID: 53658610}
   m_Layer: 0
   m_Name: ui_shiny (1)
   m_TagString: Untagged
@@ -332,6 +334,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &53658610
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 53658607}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 2.5
+--- !u!114 &53658611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 53658607}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 927afb3243c5c4b64942ecc2286383c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &59032738
 GameObject:
   m_ObjectHideFlags: 0
@@ -39382,9 +39412,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.014702058, y: 0}
+  m_Offset: {x: -0.014648093, y: -0.17121014}
   serializedVersion: 2
-  m_Radius: 0.4223877
+  m_Radius: 0.31672668
 --- !u!328 &896823010
 VideoPlayer:
   m_ObjectHideFlags: 0
@@ -39500,8 +39530,6 @@ MonoBehaviour:
   videoPlayer: {fileID: 896823010}
   sprite: {fileID: 896823012}
   image: {fileID: 1004103718}
-  character1: {fileID: 1052049616}
-  character2: {fileID: 927767183}
 --- !u!1 &920628633
 GameObject:
   m_ObjectHideFlags: 0
@@ -41139,6 +41167,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1327995916}
   - component: {fileID: 1327995915}
+  - component: {fileID: 1327995918}
+  - component: {fileID: 1327995917}
   m_Layer: 0
   m_Name: ui_shiny
   m_TagString: Untagged
@@ -41213,6 +41243,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1327995917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1327995914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 927afb3243c5c4b64942ecc2286383c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!58 &1327995918
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1327995914}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 2.5
 --- !u!1 &1424832199
 GameObject:
   m_ObjectHideFlags: 0
