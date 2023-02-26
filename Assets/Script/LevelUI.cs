@@ -6,6 +6,7 @@ public class LevelUI : MonoBehaviour
 {
     public GameObject levelOneBar;
     public GameObject levelTwoBar;
+    public GameObject levelThreeBar;
     private int characterId;
 
     void Start()
@@ -31,11 +32,19 @@ public class LevelUI : MonoBehaviour
         {
             levelOneBar.SetActive(true);
             levelTwoBar.SetActive(false);
+            levelThreeBar.SetActive(false);
         }
         else if (id == 1)
         {
             levelOneBar.SetActive(false);
             levelTwoBar.SetActive(true);
+            levelThreeBar.SetActive(false);
+        }
+        else if (id == 2)
+        {
+            levelOneBar.SetActive(false);
+            levelTwoBar.SetActive(false);
+            levelThreeBar.SetActive(true);
         }
     }
 }
