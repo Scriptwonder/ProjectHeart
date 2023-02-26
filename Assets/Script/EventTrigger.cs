@@ -1,14 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Video;
 
 public class EventTrigger : MonoBehaviour
 {
+    public VideoPlayer videoPlayer;
+    public SpriteRenderer sprite;
     private int totalPlayer = 0;
     // Start is called before the first frame update
     void Start()
     {
-        
+        videoPlayer = GetComponent<VideoPlayer>();
+        //sprite.color = new Color(1f,1f,1f,0f);
+        sprite.enabled = false;
     }
 
     // Update is called once per frame
@@ -21,6 +26,7 @@ public class EventTrigger : MonoBehaviour
         if (col.gameObject.tag == "Player" && totalPlayer != 1) {
             CharacterController characterSystem = col.gameObject.GetComponent<CharacterController>();
             characterSystem.enabled = false;
+            characterSystem.resetSpeed();
             //swap
             CameraFollow.instance.target2.gameObject.GetComponent<CharacterController>().canSwap = false;
             CameraFollow.instance.swapTarget();
@@ -28,6 +34,16 @@ public class EventTrigger : MonoBehaviour
         } else {
             //playEvent
 
+            videoPlayer.enabled = true;
+            videoPlayer.Play();
+            StartCoroutine(justTwoSecs());
+            //sprite.enabled = true;
+            //sprite.color = new Color(1f,1f,1f,1f);
         }
+    }
+
+    IEnumerator justTwoSecs() {
+        yield return new WaitForSeconds(1.25f);
+        sprite.enabled = true;
     }
 }

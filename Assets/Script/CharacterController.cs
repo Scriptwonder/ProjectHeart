@@ -64,6 +64,12 @@ public class CharacterController : MonoBehaviour
     [SerializeField]
     private BoxCollider2D playerCollider;
 
+    public void resetSpeed() {
+        
+            rb.velocity = new Vector2(0f,0f);
+            mAnimator.SetTrigger("Idle");
+    }
+
     // Start is called before the first frame update
     void Start()
     {
